@@ -37,15 +37,20 @@ jobs:
             echo "Port 8080 is already in use. Killing the process..."
             sudo lsof -i :8080 | awk 'NR!=1 {print $2}' | sudo xargs kill -9
           fi
+          
+      - name: 🐳 환경변수 Github Runner -> EC2 Server 이동 🎉
+        run: |
+          echo SPRING_PROFILES_ACTIVE=env.SPRING_PROFILES_ACTIVE >> env.yml
+          echo RDS_DRIVER=env.RDS_DRIVER >> env.yml
+          echo RDS_URL=env.RDS_URL >> env.yml
+          echo RDS_USERNAME=env.RDS_USERNAME >> env.yml
+          echo RDS_PASSWORD=env.RDS_PASSWORD >> env.yml
+      
+      - name: 🐳 환경변수 적용 🎉
         
            
       - name: 🐳 JAR 실행 🎉
         run: |
-          export SPRING_PROFILES_ACTIVE="$SPRING_PROFILES_ACTIVE"
-          export RDS_DRIVER="$RDS_DRIVER"
-          export RDS_URL="$RDS_URL"
-          export RDS_USERNAME="$RDS_USERNAME"
-          export RDS_PASSWORD="$RDS_PASSWORD"
           sudo nohup java -jar ./build/libs/jwp-shopping-order.jar &
         
         
