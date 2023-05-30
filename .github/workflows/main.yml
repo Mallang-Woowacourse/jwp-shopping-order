@@ -23,6 +23,10 @@ jobs:
       - name: 🐳 빌드 🎉
         run: |
           ./gradlew bootJar
+     
+      - name: 🔪 8080 포트 죽여버러 🤬
+        run: |
+          kill -15 $(lsof -t -i:8080)
           
       - name: 🐳 JAR 실행 🎉
         run: |
