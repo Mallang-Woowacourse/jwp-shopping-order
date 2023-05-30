@@ -16,10 +16,16 @@ jobs:
     steps:
       # 처음 _work 폴더에 github actions 프로그램이 파일을 수정할 권한이 없어서, 권한을 부여해 주기 위한 작업입니다
       # 이 명령을 통해서 이미 있는 폴더에 git pull 을 사용할 수 있습니다
-      - run: ls -al
       - uses: actions/checkout@v3
         with:
           ref: step1
-      - run: ls -al
-      - run: pwd
+          
+      - name: 🐳 빌드 🎉
+        run: |
+          ./gradlew bootJar
+          
+      - name: 🐳 JAR 실행 🎉
+        run: |
+          sudo nohup java -jar jwp-shopping-order.jar &
+        
       
