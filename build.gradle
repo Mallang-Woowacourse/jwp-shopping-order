@@ -22,6 +22,14 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 }
 
+processResources.dependsOn('copySecret')
+
+tasks.register('copySecret', Copy) {
+    from './test-submodule' //위 사진과 같은 폴더 명
+    include "application*.yml" //위 폴더안에 있는 yml파일 명
+    into 'src/main/resources' //복사할 위치
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
