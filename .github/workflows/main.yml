@@ -41,11 +41,11 @@ jobs:
            
       - name: 🐳 JAR 실행 🎉
         run: |
-          export SPRING_PROFILES_ACTIVE
-          export RDS_DRIVER
-          export RDS_URL
-          export RDS_USERNAME
-          export RDS_PASSWORD
+          export SPRING_PROFILES_ACTIVE="$SPRING_PROFILES_ACTIVE"
+          export RDS_DRIVER="$RDS_DRIVER"
+          export RDS_URL="$RDS_URL"
+          export RDS_USERNAME="$RDS_USERNAME"
+          export RDS_PASSWORD="$RDS_PASSWORD"
           sudo nohup java -jar ./build/libs/jwp-shopping-order.jar &
         
         
