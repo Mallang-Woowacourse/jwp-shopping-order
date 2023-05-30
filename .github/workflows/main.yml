@@ -26,6 +26,7 @@ jobs:
           
       - name: 🐳 JAR 실행 🎉
         run: |
+          ls -al
           sudo nohup java -jar jwp-shopping-order.jar &
         
       
