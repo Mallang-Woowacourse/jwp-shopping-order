@@ -37,6 +37,14 @@ jobs:
             echo "Port 8080 is already in use. Killing the process..."
             sudo lsof -i :8080 | awk 'NR!=1 {print $2}' | sudo xargs kill -9
           fi
+          
+      - name: 🐳 환경변수 설정 🎉
+        run: |
+          export SPRING_PROFILES_ACTIVE
+          export RDS_DRIVER
+          export RDS_URL
+          export RDS_USERNAME
+          export RDS_PASSWORD
            
       - name: 🐳 JAR 실행 🎉
         run: |
