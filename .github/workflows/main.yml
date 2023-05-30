@@ -32,15 +32,15 @@ jobs:
             sudo lsof -i :8080 | awk 'NR!=1 {print $2}' | sudo xargs kill -9
           fi
           
-      - name: 🐳 JAR 실행 🎉
-        run: |
-          sudo nohup java -jar ./build/libs/jwp-shopping-order.jar &
         env:
           SPRING_PROFILES_ACTIVE: ${{ secrets.SPRING_PROFILES_ACTIVE }}
           RDS_DRIVER: ${{ secrets.RDS_DRIVER }}
           RDS_URL: ${{ secrets.RDS_URL }}
           RDS_USERNAME: ${{ secrets.RDS_USERNAME }}
-          RDS_PASSWORD: ${{ secrets.RDS_PASSWORD }}
+          RDS_PASSWORD: ${{ secrets.RDS_PASSWORD }}     
+      - name: 🐳 JAR 실행 🎉
+        run: |
+          sudo nohup java -jar ./build/libs/jwp-shopping-order.jar &
         
         
       
