@@ -18,6 +18,8 @@ jobs:
       # 이 명령을 통해서 이미 있는 폴더에 git pull 을 사용할 수 있습니다.
       - run: ls -al
       - uses: actions/checkout@v3
+        with:
+          ref: step1
       - run: ls -al
       - run: pwd
       
