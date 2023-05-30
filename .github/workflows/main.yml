@@ -37,6 +37,8 @@ jobs:
           
       - name: 🐳 JAR 실행 🎉
         run: |
-          sudo nohup java -jar ./build/libs/jwp-shopping-order.jar &
+          cd src/main/java/cart
+          ls -al
+#          sudo nohup java -jar ./build/libs/jwp-shopping-order.jar &
         
       
