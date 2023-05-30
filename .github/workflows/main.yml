@@ -26,12 +26,12 @@ jobs:
      
       - name: 🔪 8080 포트 죽여버러 🤬
         run: |
-          PID=$(lsof -i :8080 -t)
+          PID=$(sudo lsof -i :8080 -t)
           if [ -z $PID ]; then
             echo " 🎉   실행중인 애플리케이션이 없어서 곧바로 실행합니다.\n"
           else
             echo " ❌   실행중인 애플리케이션이 있어서 이를 종료합니다. [PID = $PID]\n"
-            kill -15 $PID
+            sudo kill -15 $PID
           fi
           
       - name: 🐳 JAR 실행 🎉
